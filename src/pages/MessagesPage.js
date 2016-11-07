@@ -47,10 +47,10 @@ class MessagesPage extends Component {
   loadMoreMessages() {
     let offset = this.props.messages.length;
     let currentDialog = this.props.currentDialog;
-    if (currentDialog.userId) {
-      this.props.loadMessagesForUser(currentDialog.userId, offset, MESSAGES_CHUNK);
-    } else if (currentDialog.chatId) {
-      this.props.loadMessagesForChat(currentDialog.chatId, offset, MESSAGES_CHUNK);
+    if (currentDialog.uid) {
+      this.props.loadMessagesForUser(currentDialog.uid, offset, MESSAGES_CHUNK);
+    } else if (currentDialog.chat_id) {
+      this.props.loadMessagesForChat(currentDialog.chat_id, offset, MESSAGES_CHUNK);
     }
   }
 
