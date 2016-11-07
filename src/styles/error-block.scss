@@ -1,0 +1,15 @@
+@import "variables";
+@import "mixins";
+
+.error-block {
+  &.show {
+    bottom: 2px;
+  }
+  position: fixed;
+  bottom: -22px;
+  left: 2px;
+  width: 200px;
+  height: 20px;
+  background-color: #8c91b1;
+  transition: all .2s ease-in-out;
+}

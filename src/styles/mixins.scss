@@ -1,0 +1,22 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin circle($radius) {
+  width: $radius;
+  height: $radius;
+  @include border-radius($radius / 2);
+}
+
+@mixin image-box($size) {
+  img {
+    width: $size;
+    height: $size;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+  }
+}

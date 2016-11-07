@@ -1,0 +1,116 @@
+@import "variables";
+@import "dialog-header";
+
+.content-box.messages {
+  .conv-tile-box {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow: hidden;
+    .conv-tile {
+      cursor: pointer;
+      &:hover {
+        background-color: $HOVER_DIALOG_COLOR;
+      }
+      &.unread {
+        background-color: $UNREAD_DIALOG_COLOR;
+      }
+      &.selected {
+        color: white;
+        background-color: $SELECTED_DIALOG_COLOR;
+        span {
+          color: white;
+        }
+      }
+      &.first {
+        border-top: thin solid $BORDER_TILE_COLOR;
+      }
+      height: $CONV-TILE_HEIGHT;
+      padding: 5px 18px 5px 10px;
+      border-bottom: thin solid $BORDER_TILE_COLOR;
+    }
+    .left-part {
+      height: 100%;
+      width: $TILE_LEFT_PART_WIDTH;
+      float: left;
+      position: relative;
+    }
+    .center-part {
+      width: calc(100% - #{$TILE_LEFT_PART_WIDTH + $TILE_RIGHT_PART_WIDTH});
+      height: 100%;
+      float: left;
+    }
+    .right-part {
+      height: 100%;
+      width: $TILE_RIGHT_PART_WIDTH;
+      float: right;
+    }
+    .sender-img {
+      width: $SENDER_IMG_DIAMETER;
+      height: $SENDER_IMG_DIAMETER;
+      margin: auto;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      img {
+        width: $SENDER_IMG_DIAMETER;
+        height: $SENDER_IMG_DIAMETER;
+        border-radius: $SENDER_IMG_DIAMETER / 2;
+        -webkit-border-radius: $SENDER_IMG_DIAMETER / 2;
+        -moz-border-radius: $SENDER_IMG_DIAMETER / 2;
+      }
+    }
+    .social-img {
+      width: $SOCIAL_IMG_DIAMETER;
+      height: $SOCIAL_IMG_DIAMETER;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      img {
+        width: $SOCIAL_IMG_DIAMETER;
+        height: $SOCIAL_IMG_DIAMETER;
+        border-radius: $SOCIAL_IMG_DIAMETER / 2;
+        -webkit-border-radius: $SOCIAL_IMG_DIAMETER / 2;
+        -moz-border-radius: $SOCIAL_IMG_DIAMETER / 2;
+      }
+    }
+    .tile-title, .tile-preview {
+      padding-left: 10px;
+      text-align: left;
+      line-height: $CONV-TILE_HEIGHT / 2;
+      height: $CONV-TILE_HEIGHT / 2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tile-title {
+      span {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1c1c1c;
+      }
+    }
+    .tile-preview {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding-right: 5px;
+      span {
+        color: #555454;
+        font-size: 14px;
+      }
+    }
+    .tile-delete, .send-time {
+      line-height: $CONV-TILE_HEIGHT / 2;
+      height: $CONV-TILE_HEIGHT / 2;
+      span {
+        font-size: 14px;
+        font-family: Roboto;
+        color: #838383;
+        float: right;
+      }
+      .fa.fa-times {
+        float: right;
+        margin-top: 5px;
+      }
+    }
+  }
+}

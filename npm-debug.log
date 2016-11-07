@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/opt/node/node-v6.6.0-linux-x64/bin/node',
+1 verbose cli   '/opt/node/node-v6.6.0-linux-x64/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'start-dev' ]
+2 info using npm@3.10.3
+3 info using node@v6.6.0
+4 verbose run-script [ 'prestart-dev', 'start-dev', 'poststart-dev' ]
+5 info lifecycle messages-client@0.0.1~prestart-dev: messages-client@0.0.1
+6 silly lifecycle messages-client@0.0.1~prestart-dev: no script for prestart-dev, continuing
+7 info lifecycle messages-client@0.0.1~start-dev: messages-client@0.0.1
+8 verbose lifecycle messages-client@0.0.1~start-dev: unsafe-perm in lifecycle true
+9 verbose lifecycle messages-client@0.0.1~start-dev: PATH: /opt/node/node-v6.6.0-linux-x64/lib/node_modules/npm/bin/node-gyp-bin:/home/sadvit/Documents/Projects/messages-client/node_modules/.bin:/opt/node/node-v6.6.0-linux-x64/bin:/opt/gradle/gradle-3.1/bin:/opt/groovy/groovy-2.4.7/bin:/opt/charles/charles/bin:/opt/jdk/jdk1.8.0_102/bin:/home/sadvit/Documents/Projects/launchers:/opt/node/node-v6.6.0-linux-x64/bin:/home/sadvit/bin:/home/sadvit/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle messages-client@0.0.1~start-dev: CWD: /home/sadvit/Documents/Projects/messages-client
+11 silly lifecycle messages-client@0.0.1~start-dev: Args: [ '-c',
+11 silly lifecycle   'concurrently --kill-others "npm run start-server" "npm run start-electron"' ]
+12 silly lifecycle messages-client@0.0.1~start-dev: Returned: code: 1  signal: null
+13 info lifecycle messages-client@0.0.1~start-dev: Failed to exec start-dev script
+14 verbose stack Error: messages-client@0.0.1 start-dev: `concurrently --kill-others "npm run start-server" "npm run start-electron"`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/opt/node/node-v6.6.0-linux-x64/lib/node_modules/npm/lib/utils/lifecycle.js:242:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/opt/node/node-v6.6.0-linux-x64/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid messages-client@0.0.1
+16 verbose cwd /home/sadvit/Documents/Projects/messages-client
+17 error Linux 4.4.0-42-generic
+18 error argv "/opt/node/node-v6.6.0-linux-x64/bin/node" "/opt/node/node-v6.6.0-linux-x64/bin/npm" "run" "start-dev"
+19 error node v6.6.0
+20 error npm  v3.10.3
+21 error code ELIFECYCLE
+22 error messages-client@0.0.1 start-dev: `concurrently --kill-others "npm run start-server" "npm run start-electron"`
+22 error Exit status 1
+23 error Failed at the messages-client@0.0.1 start-dev script 'concurrently --kill-others "npm run start-server" "npm run start-electron"'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the messages-client package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     concurrently --kill-others "npm run start-server" "npm run start-electron"
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs messages-client
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls messages-client
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

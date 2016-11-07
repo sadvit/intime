@@ -1,0 +1,16 @@
+@import "variables";
+
+.wrapper {
+  padding-top: $HEADER_HEIGHT;
+  height: $WRAPPER_HEIGHT;
+  width: $WRAPPER_WIDTH;
+  text-align: center;
+  box-sizing: border-box;
+  .content {
+    height: $CONTENT_HEIGHT;
+    .content-box {
+      position: relative;
+      height: $CONTENT_BOX_HEIGHT;
+    }
+  }
+}

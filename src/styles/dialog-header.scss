@@ -1,0 +1,59 @@
+@import "variables";
+@import "mixins";
+
+.content-box.messages {
+  .side-header {
+    &.right {
+      background-color: white;
+      border-bottom: thin solid $BORDER_TILE_COLOR;
+      padding-left: 20px;
+    }
+    padding: 5px;
+    margin-top: 0;
+    height: 40px;
+    line-height: 40px;
+    color: #A0A0A0;
+    box-sizing: border-box;
+    border-bottom: thin solid $BORDER_TILE_COLOR;
+    display: flex;
+    .search-button {
+      cursor: pointer;
+      display: inline-block;
+      height: 100%;
+      width: 30px;
+      line-height: 29px;
+      font-size: $SIDE_HEADER_ICON_SIZE;
+    }
+    .search-area {
+      display: inline-block;
+      line-height: 29px;
+      height: 100%;
+      width: calc(100% - 60px);
+      text-align: left;
+      input {
+        outline: none;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+        color: #838383;
+        &:focus {
+          color: $SIDE_HEADER_FONT_COLOR;
+        }
+      }
+    }
+    .refresh-button {
+      img {
+        &:hover {
+          transform: rotate(360deg);
+        }
+        transition: transform 1s;
+      }
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      height: 100%;
+      @include image-box(20px);
+    }
+  }
+}

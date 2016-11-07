@@ -1,0 +1,41 @@
+@import "variables";
+@import "mixins";
+
+.content-box.messages {
+  .sender-view {
+    display: inline-block;
+    height: 100%;
+    width: calc(100% - 30px);
+    text-align: left;
+    .sender-name {
+      float: left;
+      height: 100%;
+      line-height: 29px;
+      font-weight: 600;
+      span {
+        color: #1c1c1c;
+        font-size: 14px;
+      }
+    }
+  }
+  .message-tools {
+    width: 60px;
+    display: flex;
+    .search-button {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      height: 100%;
+      @include image-box(20px);
+    }
+    .refresh-button {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      height: 100%;
+      @include image-box(20px);
+    }
+  }
+}
