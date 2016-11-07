@@ -1,5 +1,3 @@
-import { CALL_API } from '../middleware/api'
-import $ from 'jquery'
 import { messagesForUserAction, messagesForChatAction } from './messagesActions'
 import DialogService from '../services/DialogService'
 

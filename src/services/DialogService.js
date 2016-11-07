@@ -1,25 +1,26 @@
 import VK_API from './VK_API'
 import _ from 'lodash'
 import $ from 'jquery'
-import JsonUtils from '../utils/JsonUtils'
-import { fetchUsersInfo } from '../services/UserService'
+import UserService from '../services/UserService'
 
 export default class DialogService {
 
-  static findUserIds(extSuccess) {
-    let arr = extSuccess.response.slice(1, extSuccess.response.length);
+  static findUserIds(dialogs) {
+    let arr = dialogs.response.slice(1, dialogs.response.length);
     return _.map(arr, 'uid');
   }
 
   static concatInfo(dialogs, infos) {
     let _dialogs = dialogs.response.slice(1, dialogs.response.length);
     let _infos = infos.response;
-    let result = [];
     _dialogs.forEach((dialog)=> {
       let inform = _.findLast(_infos, (info)=> {
-        return info.uid == dialog.uid;
+        return info.uid === dialog.uid;
       });
-      dialog.photo = inform.photo_medium
+      if (inform) {
+        dialog.photo = inform.photo_medium;
+        dialog.title = `${inform.first_name} ${inform.last_name}`;
+      }
     })
     return _dialogs;
   }
@@ -28,21 +29,14 @@ export default class DialogService {
     let access_token = localStorage.getItem('access_token');
     return new Promise((resolve, reject)=> {
       VK_API.fetch('messages.getDialogs', $.param({access_token, offset, count}))
-        .then(success => {
-          JsonUtils.extractSuccess(success)
-            .then((extSuccess)=> {
-              let ids = DialogService.findUserIds(extSuccess);
-              fetchUsersInfo(ids)
-                .then((success)=> {
-                  let dialogs = DialogService.concatInfo(extSuccess, success);
-                  resolve(dialogs);
-                })
-                .catch((failure)=> {
-                  reject(failure);
-                })
+        .then(dialogs => {
+          let ids = DialogService.findUserIds(dialogs);
+          UserService.fetchUsersInfo(ids)
+            .then((infos)=> {
+              resolve(DialogService.concatInfo(dialogs, infos));
             })
-            .catch((extFailure)=> {
-              reject(extFailure);
+            .catch((failure)=> {
+              reject(failure);
             })
         })
         .catch(failure => {

@@ -1,7 +1,7 @@
 import * as ActionTypes from '../actions'
 
 const loginReducer = (state = {}, action) => {
-  const { type, success, failure } = action;
+  const { type, success } = action;
 
   switch (type) {
     case ActionTypes.USER_VK_SUCCESS:

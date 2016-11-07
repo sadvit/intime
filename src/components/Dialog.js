@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { dialogSelected } from '../actions'
+import moment from 'moment'
 
 class Dialog extends Component {
 
@@ -13,7 +14,7 @@ class Dialog extends Component {
     let dialogStyle = classNames({
       'conv-tile': true,
       'selected': this.props.model.selected,
-      'unread': !this.props.model.readState
+      'unread': !this.props.model.read_state
     });
     return (
       <div onClick={this.selectDialog.bind(this, this.props.model)} className={dialogStyle}>
@@ -28,7 +29,7 @@ class Dialog extends Component {
         </div>
         <div className="right-part">
           <div className="tile-delete"><i className="fa fa-times" aria-hidden="true"/></div>
-          <div className="send-time"><span>{this.props.model.date}</span></div>
+          <div className="send-time"><span>{moment.unix(this.props.model.date).format("HH:MM")}</span></div>
         </div>
       </div>
     )
