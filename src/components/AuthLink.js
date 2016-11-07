@@ -32,27 +32,27 @@ class AuthLink extends Component {
     let classNameValue, srcImageValue;
     switch (this.props.type) {
       case 'vk':
-        classNameValue = "vk-img";
+        classNameValue = "vk-img enabled";
         srcImageValue = "assets/vk.svg";
         break;
       case 'facebook':
-        classNameValue = "facebook-img";
+        classNameValue = "facebook-img disabled";
         srcImageValue = "assets/facebook.svg";
         break;
       case 'linkedIn':
-        classNameValue = "linkedIn-img";
+        classNameValue = "linkedIn-img disabled";
         srcImageValue = "assets/linkedIn.svg";
         break;
       case 'telegram':
-        classNameValue = "telegram-img";
+        classNameValue = "telegram-img disabled";
         srcImageValue = "assets/telegram.svg";
         break;
       case 'skype':
-        classNameValue = "skype-img";
+        classNameValue = "skype-img disabled";
         srcImageValue = "assets/skype.svg";
         break;
       case 'whatsapp':
-        classNameValue = "whatsapp-img";
+        classNameValue = "whatsapp-img disabled";
         srcImageValue = "assets/whatsapp.svg";
         break;
       default:

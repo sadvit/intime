@@ -12,7 +12,7 @@ export default class IndexPage extends Component {
             <span className="header">Login using one of the social networks</span>
             <span className="descr">This service allows you to respond quickly to all of your messages from different social networks</span>
           </div>
-          <div className="links">
+          <div className="links nonDraggableImage">
             <div className="links-container">
               <img alt={this.props.alt} className="main-img" src="assets/mail.svg"/>
               <AuthLink type="vk"/>

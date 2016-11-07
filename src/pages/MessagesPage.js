@@ -5,7 +5,7 @@ import Wrapper from '../components/Wrapper.js'
 import Dialogs from '../components/Dialogs.js'
 import Messages from '../components/Messages.js'
 
-const INIT_MESSAGES_COUNT = 20;
+//const INIT_MESSAGES_COUNT = 20;
 const INIT_DIALOGS_COUNT = 20;
 const MESSAGES_CHUNK = 20;
 const DIALOGS_CHUNK = 20;
