@@ -18,4 +18,16 @@
     float: right;
     background-color: $RIGHT_BAR_BACKGROUND_COLOR;
   }
+  .empty-alert {
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    span {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 22;
+      color: #515151;
+    }
+  }
 }

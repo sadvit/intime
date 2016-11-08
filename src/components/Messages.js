@@ -20,9 +20,13 @@ class Messages extends Component {
     }
   }
 
+  isHaveMessages() {
+    return this.props.messages && Object.keys(this.props.messages).length >= 0 // TODO: refactoring this to currentDialog -> messages
+  }
+
   renderMessages() {
     let messages = this.props.messages;
-    if (messages) {
+    if (this.isHaveMessages()) {
       return Object.keys(messages).map((key, index) => {
         let message = messages[key];
         let last = index === messages.length - 1;
@@ -33,10 +37,21 @@ class Messages extends Component {
     }
   }
 
-  render() {
-    return (
-      <div className="right-bar">
-        <MessagesHeader/>
+  renderHeader() {
+    if (this.isHaveMessages()) {
+      return <MessagesHeader/>
+    }
+  }
+
+  renderSender() {
+    if (this.isHaveMessages()) {
+      return <MessagesSender/>
+    }
+  }
+
+  renderMessagesBox() {
+    if (this.isHaveMessages()) {
+      return (
         <div className="messages-box">
           <Scrollbars autoHide
                       autoHideTimeout={1000}
@@ -46,7 +61,20 @@ class Messages extends Component {
             {this.renderMessages()}
           </Scrollbars>
         </div>
-        <MessagesSender/>
+      )
+    } else {
+      return (
+        <div className='empty-alert'><span>{"Select a chat for conversation"}</span></div>
+      )
+    }
+  }
+
+  render() {
+    return (
+      <div className="right-bar">
+        {this.renderHeader()}
+        {this.renderMessagesBox()}
+        {this.renderSender()}
       </div>
     )
   }
