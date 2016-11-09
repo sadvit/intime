@@ -11,8 +11,8 @@ export const showError = (message) => (dispatch) => {
   }, ERROR_HIDE_TIMEOUT);
 }
 
-export const handleErrorCode = (json) => (dispatch) => {
-  switch (json.code) {
+export const handleErrorCode = (failure) => (dispatch) => {
+  switch (failure.error_code) {
     case 5:
       localStorage.removeItem("access_token");
       localStorage.removeItem("user_id");

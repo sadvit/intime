@@ -7,11 +7,11 @@ export const LOAD_DIALOGS_FAILURE = 'LOAD_DIALOGS_FAILURE';
 
 export const loadDialogsForUser = (offset, count) => (dispatch, getState) => {
   dispatch({ type: LOAD_DIALOGS_REQUEST });
-  DialogService.fetchDialogs(offset, count)
-    .then(success => {
+  DialogService.fetchDialogs(offset, count).then(
+    (success) => {
       dispatch({ type: LOAD_DIALOGS_SUCCESS, success });
-    })
-    .catch(failure => {
+    },
+    (failure) => {
       dispatch({ type: LOAD_DIALOGS_FAILURE, failure });
     })
 }

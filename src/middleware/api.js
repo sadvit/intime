@@ -51,10 +51,10 @@ export default store => next => action => {
     contentType: "application/json"
   })
 
-  promise
-    .then(response => {
-      response.json()
-        .then((json) => {
+  promise.then(
+    (response) => {
+      response.json().then(
+        (json) => {
           if (response.ok) {
             next(actionWith({
               type: successType,
@@ -63,12 +63,11 @@ export default store => next => action => {
           } else {
             handleErrorCode(json)(next);
           }
-        })
-        .catch(error => {
+        },
+        (error) => {
           showError(error.message)(next);
         })
-    })
-    .catch(error => {
-      showError(error.message)(next);
-    })
+  }, (error) => {
+    showError(error.message)(next);
+  })
 }
