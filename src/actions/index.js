@@ -1,6 +1,5 @@
 export * from './authActions'
 export * from './dialogsActions'
-export * from './errorsActions'
 export * from './messagesActions'
 export * from './userActions'
 export * from './windowsActions'

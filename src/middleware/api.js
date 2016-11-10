@@ -1,5 +1,3 @@
-import { showError, handleErrorCode } from '../actions/errorsActions'
-
 const API_ROOT = 'https://api.vk.com/method/'
 
 // Action key that carries API call info interpreted by this Redux middleware.
@@ -61,13 +59,13 @@ export default store => next => action => {
               response: json
             }))
           } else {
-            handleErrorCode(json)(next);
+            //handleErrorCode(json)(next);
           }
         },
         (error) => {
-          showError(error.message)(next);
+          //showError(error.message)(next);
         })
   }, (error) => {
-    showError(error.message)(next);
+    //showError(error.message)(next);
   })
 }

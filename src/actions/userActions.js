@@ -1,5 +1,4 @@
 import UserService from '../services/UserService'
-import { handleErrorCode } from './errorsActions'
 
 export const USER_VK_REQUEST = 'USER_VK_REQUEST';
 export const USER_VK_SUCCESS = 'USER_VK_SUCCESS';
@@ -12,7 +11,6 @@ export const loadUserVk = (userId) => (dispatch, getState) => {
       dispatch({ type: USER_VK_SUCCESS, success });
     },
     (failure) => {
-      handleErrorCode(failure)(dispatch);
       dispatch({ type: USER_VK_FAILURE, failure });
     }
   )
