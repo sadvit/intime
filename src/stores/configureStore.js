@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import api from '../middlewares/Api'
 import errors from '../middlewares/Errors'
+import windowMiddleware from '../middlewares/Window'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
 import { routerMiddleware } from 'react-router-redux'
@@ -17,6 +18,7 @@ const configureStore = preloadedState => {
         thunk,
         api,
         errors,
+        windowMiddleware,
         createLogger(),
         routerMiddleware(browserHistory)),
       DevTools.instrument()

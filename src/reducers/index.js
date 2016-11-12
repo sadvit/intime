@@ -1,7 +1,6 @@
-import { routerReducer as routing } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
-import windowReducer from './WindowReducer'
 import messagesReducer from './MessagesReducer'
 import loginReducer from './LoginReducer'
 import errorReducer from './ErrorsReducer'
@@ -13,9 +12,8 @@ const rootReducer = combineReducers({
   messages: messagesReducer,
   dialogs: dialogsReducer,
   currentDialog: currentDialogReducer,
-  window: windowReducer,
   error: errorReducer,
-  routing
+  routing: routerReducer
 })
 
 export default rootReducer
