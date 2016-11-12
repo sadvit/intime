@@ -1,12 +1,12 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
-import windowReducer from './windowReducer'
-import messagesReducer from './messagesReducer'
-import loginReducer from './loginReducer'
-import errorReducer from './errorReducer'
-import dialogsReducer from './dialogsReducer'
-import currentDialogReducer from './currentDialogReducer'
+import windowReducer from './WindowReducer'
+import messagesReducer from './MessagesReducer'
+import loginReducer from './LoginReducer'
+import errorReducer from './ErrorsReducer'
+import dialogsReducer from './DialogsReducer'
+import currentDialogReducer from './SelectedDialogReducer'
 
 const rootReducer = combineReducers({
   user: loginReducer,

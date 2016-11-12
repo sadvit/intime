@@ -1,4 +1,4 @@
-import { CALL_API } from '../middleware/api'
+import { CALL_API } from '../middlewares/Api'
 import $ from 'jquery'
 
 export const MESSAGE_SENT = 'MESSAGE_SENT';

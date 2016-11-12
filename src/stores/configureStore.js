@@ -1,21 +1,24 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
-import api from '../middleware/api'
-//import errors from '../middleware/errors'
+import api from '../middlewares/Api'
+import errors from '../middlewares/Errors'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
 import { routerMiddleware } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-
-const middleware = routerMiddleware(browserHistory);
 
 const configureStore = preloadedState => {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      applyMiddleware(thunk, api, createLogger(), middleware),
+      applyMiddleware(
+        thunk,
+        api,
+        errors,
+        createLogger(),
+        routerMiddleware(browserHistory)),
       DevTools.instrument()
     )
   )

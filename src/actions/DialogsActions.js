@@ -1,4 +1,4 @@
-import { messagesForUserAction, messagesForChatAction } from './messagesActions'
+import { messagesForUserAction, messagesForChatAction } from './MessagesActions'
 import DialogService from '../services/DialogService'
 
 export const LOAD_DIALOGS_REQUEST = 'LOAD_DIALOGS_REQUEST';
