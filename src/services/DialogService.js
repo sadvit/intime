@@ -1,6 +1,5 @@
 import VK_API from './VK_API'
 import _ from 'lodash'
-import $ from 'jquery'
 import UserService from '../services/UserService'
 
 export default class DialogService {
@@ -26,9 +25,8 @@ export default class DialogService {
   }
 
   static fetchDialogs(offset, count) {
-    let access_token = localStorage.getItem('access_token');
     return new Promise((resolve, reject)=> {
-      VK_API.fetch('messages.getDialogs', $.param({access_token, offset, count})).then(
+      VK_API.fetch('messages.getDialogs', {offset, count}).then(
         (dialogs) => {
           let ids = DialogService.findUserIds(dialogs);
           UserService.fetchUsersInfo(ids).then(

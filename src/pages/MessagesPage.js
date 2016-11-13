@@ -1,14 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { loadDialogsForUser, loadUserVk, loadMessagesForUser, loadMessagesForChat } from '../actions'
+import { loadDialogsForUser, loadUserVk } from '../actions'
 import Wrapper from '../components/Wrapper.js'
 import Dialogs from '../components/Dialogs.js'
-import Messages from '../components/Messages.js'
-
-//const INIT_MESSAGES_COUNT = 20;
-const INIT_DIALOGS_COUNT = 20;
-const MESSAGES_CHUNK = 20;
-const DIALOGS_CHUNK = 20;
+import UserMessages from '../components/UserMessages.js'
+import ChatMessages from '../components/ChatMessages.js'
+import { INIT_DIALOGS_COUNT } from '../const'
+import * as Utils from '../services/Utils'
 
 const hasSavedAccessKey = () => {
   return localStorage.getItem('access_token') && localStorage.getItem('user_id');
@@ -44,26 +42,21 @@ class MessagesPage extends Component {
     }
   }
 
-  loadMoreMessages() {
-    let offset = this.props.messages.length;
-    let currentDialog = this.props.currentDialog;
-    if (currentDialog.uid) {
-      this.props.loadMessagesForUser(currentDialog.uid, offset, MESSAGES_CHUNK);
-    } else if (currentDialog.chat_id) {
-      this.props.loadMessagesForChat(currentDialog.chat_id, offset, MESSAGES_CHUNK);
+  renderMessagesBox() {
+    let selectedDialog = this.props.selectedDialog;
+    if (Utils.isChatDialog(selectedDialog)) {
+      return <ChatMessages/>
     }
-  }
-
-  loadMoreDialogs() {
-    let offset = this.props.dialogs.length;
-    this.props.loadDialogsForUser(offset, DIALOGS_CHUNK);
+    if (Utils.isUserDialog(selectedDialog)) {
+      return <UserMessages/>
+    }
   }
 
   render() {
     return (
       <Wrapper pageName="messages">
-        <Dialogs {...this.props} onScrollDown={this.loadMoreDialogs.bind(this)}/>
-        <Messages {...this.props} onScrollTop={this.loadMoreMessages.bind(this)}/>
+        <Dialogs/>
+        {this.renderMessagesBox()}
       </Wrapper>
     )
   }
@@ -73,12 +66,14 @@ class MessagesPage extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.user,
-    messages: state.messages.messages,
+    messages: state.messages,
     dialogs: state.dialogs,
-    currentDialog: state.currentDialog
+    selectedDialog: state.selectedDialog
   }
 }
 
-export default connect(mapStateToProps, {
-  loadDialogsForUser, loadUserVk, loadMessagesForUser, loadMessagesForChat
-})(MessagesPage)
+const props = {
+  loadDialogsForUser, loadUserVk
+}
+
+export default connect(mapStateToProps, props)(MessagesPage)

@@ -69,6 +69,12 @@
       font-size: 15px;
       text-align: left;
       min-height: 20px;
+      .emoji {
+        width: 16px;
+        height: 16px;
+        margin-left: 1px;
+        margin-right: 1px;
+      }
     }
     .message-date {
       position: absolute;
@@ -91,14 +97,5 @@
         border: 1px solid #5c628e;
       }
     }
-
-
-    .tooltip-control {
-      .tooltip {
-
-      }
-    }
-
-
   }
 }

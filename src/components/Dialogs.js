@@ -4,18 +4,19 @@ import { connect } from 'react-redux'
 import DialogsHeader from '../components/DialogsHeader.js'
 import {Scrollbars} from 'react-custom-scrollbars';
 import _ from 'lodash';
+import { DIALOGS_CHUNK } from '../const'
 
 class Dialogs extends Component {
 
   static propTypes = {
     dialogs: PropTypes.array,
-    onScrollDown: PropTypes.func.isRequired
   }
 
   onScrollStop() {
     let top = this.dialogsScroll.getValues().top;
     if (top === 1) {
-      this.props.onScrollDown();
+      let offset = this.props.dialogs.length;
+      this.props.loadDialogsForUser(offset, DIALOGS_CHUNK);
     }
   }
 

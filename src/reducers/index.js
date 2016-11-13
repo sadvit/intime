@@ -5,13 +5,13 @@ import messagesReducer from './MessagesReducer'
 import loginReducer from './LoginReducer'
 import errorReducer from './ErrorsReducer'
 import dialogsReducer from './DialogsReducer'
-import currentDialogReducer from './SelectedDialogReducer'
+import selectedDialogReducer from './SelectedDialogReducer'
 
 const rootReducer = combineReducers({
   user: loginReducer,
   messages: messagesReducer,
   dialogs: dialogsReducer,
-  currentDialog: currentDialogReducer,
+  selectedDialog: selectedDialogReducer,
   error: errorReducer,
   routing: routerReducer
 })

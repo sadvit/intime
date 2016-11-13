@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actions'
 
-const currentDialogReducer = (state = null, action) => {
+const selectedDialogReducer = (state = {}, action) => {
   const { type, dialog } = action;
 
   switch (type) {
@@ -12,4 +12,4 @@ const currentDialogReducer = (state = null, action) => {
 
 }
 
-export default currentDialogReducer
+export default selectedDialogReducer

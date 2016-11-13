@@ -6,8 +6,8 @@ const dialogsReducer = (state = [], action) => {
   switch (type) {
     case ActionTypes.LOAD_DIALOGS_SUCCESS:
       let oldDialogs = state.slice();
-      let currentDialogs = oldDialogs.concat(success);
-      return currentDialogs;
+      let selectedDialogs = oldDialogs.concat(success);
+      return selectedDialogs;
     default:
       return state;
   }

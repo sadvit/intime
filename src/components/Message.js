@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
+import twemoji from 'twemoji'
 
 export default class Message extends Component {
 
@@ -12,6 +13,12 @@ export default class Message extends Component {
           </div>
         )
     }
+  }
+
+  getMessageBody() {
+    return twemoji.parse(this.props.model.body, (icon, options, variant) => {
+      return `/assets/emoji/svg/${icon}.svg`;
+    });
   }
 
   render() {
@@ -34,7 +41,7 @@ export default class Message extends Component {
         <div className={messageStyle}>
           {this.renderAuthorBlock()}
           <div className="message-content">
-            <span dangerouslySetInnerHTML={{__html: this.props.model.body}}/>
+            <span dangerouslySetInnerHTML={{__html: this.getMessageBody()}}/>
           </div>
           <div className="message-status">
             <div className={circleStyle}></div>

@@ -9,14 +9,14 @@ export default class MessagesSender extends Component {
   handleMessageSend(event) {
     if (event.keyCode === 13) {
       let dialog = this.state.messData.selectedDialog;
-      if (dialog.userId) {
+      if (dialog.user_id) {
         /*this.getFlux().actions.sendMessage({
-          userId: dialog.userId,
+          user_id: dialog.user_id,
           message: this.message
         });*/
       } else {
         /*this.getFlux().actions.sendMessage({
-          chatId: dialog.chatId,
+          chat_id: dialog.chat_id,
           message: this.message
         });*/
       }

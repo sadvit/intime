@@ -19,10 +19,10 @@ export const loadDialogsForUser = (offset, count) => (dispatch, getState) => {
 export const DIALOG_SELECTED = 'DIALOG_SELECTED';
 
 const dialogSelectedAction = (dialog) => {
-  if (dialog.uid) {
-    return messagesForUserAction(dialog.uid, 0, 20);
-  } else if (dialog.chat_id) {
+  if (dialog.chat_id) {
     return messagesForChatAction(dialog.chat_id, 0, 20);
+  } else if (dialog.uid) {
+    return messagesForUserAction(dialog.uid, 0, 20);
   } else {
     console.error('Undefined dialog type selected');
   }

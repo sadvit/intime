@@ -1,29 +1,47 @@
 import * as ActionTypes from '../actions'
+import _ from 'lodash'
 
-const messagesReducer = (state = [], action) => {
-  const { type, response, userId: newUserId, chatId: newChatId } = action;
+const extractMessages = (success) => {
+    let arr = success.response;
+    return arr.slice(1, arr.length);
+}
 
-  let resp = [];
-  if (response) {
-    resp = response.response.slice(1, response.response.length);    
+const getNextState = (state) => {
+  if (state) {
+    return _.cloneDeep(state);
   }
+}
 
-  switch (type) {
-    case ActionTypes.LOAD_MESSAGES_SUCCESS:
-      const { messages, userId: oldUserId, chatId: oldChatId } = state;
-      let oldMessages;
-      if (newUserId !== oldUserId || newChatId !== oldChatId) {
-        oldMessages = [];
-      } else {
-        oldMessages = messages.slice();
-      }
-      let newMessages = resp.reverse();
-      let currentMessages = newMessages.concat(oldMessages);
-      return { messages: currentMessages, userId: newUserId, chatId: newChatId };
+const getInitState = () => {
+  return {
+    users: {},
+    chats: {}
+  }
+}
+
+const messagesReducer = (state = getInitState(), action) => {
+  switch (action.type) {
+    case ActionTypes.LOAD_USER_MESSAGES_SUCCESS: {
+      let nextState = getNextState(state);
+      const { success, info: { user_id } } = action;
+      const { users: { [user_id]: userMessages = [] } } = nextState;
+      let messages = extractMessages(success).reverse();
+      let currentMessages = messages.concat(userMessages);
+      nextState.users[user_id] = currentMessages;
+      return nextState;
+    }
+    case ActionTypes.LOAD_CHAT_MESSAGES_SUCCESS: {
+      let nextState = getNextState(state);
+      const { success, info: { chat_id } } = action;
+      const { chats: { [chat_id]: chatMessages = [] } } = nextState;
+      let messages = extractMessages(success).reverse();
+      let currentMessages = messages.concat(chatMessages);
+      nextState.chats[chat_id] = currentMessages;
+      return nextState;
+    }
     default:
       return state;
   }
-
 }
 
 export default messagesReducer

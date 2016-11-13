@@ -1,17 +1,19 @@
+import $ from 'jquery'
 import _ from 'lodash'
 
 const VK_API_ROOT = 'https://api.vk.com/method/'
 
 export default class VK_API {
 
-  static fetch(endpoint, params) {
+  static fetch(endpoint, params, fetchParams = {}) {
+    params['access_token'] = localStorage.getItem('access_token');
+    let queryParams = $.param(params);
     return new Promise((resolve, reject)=> {
-      fetch(`${VK_API_ROOT}${endpoint}?${params}`, {
-        headers: {
-          "access_token": localStorage.getItem('access_token')
-        },
+      let defaultFetchParams = {
         contentType: "application/json"
-      }).then((success)=> {
+      }
+      _.merge(defaultFetchParams, fetchParams);
+      fetch(`${VK_API_ROOT}${endpoint}?${queryParams}`, defaultFetchParams).then((success) => {
         success.json().then((json) => {
           if (success.ok) {
             if (json.error) {

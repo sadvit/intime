@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 class MessagesHeader extends Component {
 
   getCurrentDialogTitle() {
-    if (this.props.currentDialog) {
-      return this.props.currentDialog.title
+    if (this.props.selectedDialog) {
+      return this.props.selectedDialog.title
     }
   }
 
@@ -30,6 +30,6 @@ class MessagesHeader extends Component {
 
 export default connect((state) => {
   return {
-    currentDialog: state.currentDialog
+    selectedDialog: state.selectedDialog
   };
 })(MessagesHeader)
