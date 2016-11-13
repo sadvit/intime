@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { dialogSelected } from '../actions'
-import moment from 'moment'
+import * as Utils from '../services/Utils'
+import _ from 'lodash'
 
 class Dialog extends Component {
 
@@ -10,10 +11,14 @@ class Dialog extends Component {
     this.props.dialogSelected(dialog);
   }
 
+  isDialogSelected() {
+    return _.isEqual(this.props.selectedDialog, this.props.model);
+  }
+
   render() {
     let dialogStyle = classNames({
       'conv-tile': true,
-      'selected': this.props.model.selected,
+      'selected': this.isDialogSelected(),
       'unread': !this.props.model.read_state
     });
     return (
@@ -29,13 +34,13 @@ class Dialog extends Component {
         </div>
         <div className="right-part">
           <div className="tile-delete"><i className="fa fa-times" aria-hidden="true"/></div>
-          <div className="send-time"><span>{moment.unix(this.props.model.date).format("HH:MM")}</span></div>
+          <div className="send-time"><span>{Utils.timeFormat(this.props.model.date)}</span></div>
         </div>
       </div>
     )
   }
 }
 
-export default connect(null, {
-  dialogSelected
-})(Dialog)
+export default connect((state, ownProps) => {
+  return { selectedDialog: state.selectedDialog }
+}, { dialogSelected })(Dialog)

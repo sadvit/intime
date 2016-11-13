@@ -1,6 +1,7 @@
 import VK_API from './VK_API'
 import _ from 'lodash'
 import UserService from '../services/UserService'
+import * as Utils from '../services/Utils'
 
 export default class DialogService {
 
@@ -18,7 +19,9 @@ export default class DialogService {
       });
       if (inform) {
         dialog.photo = inform.photo_medium;
-        dialog.title = `${inform.first_name} ${inform.last_name}`;
+        if (Utils.isEmptyTitle(dialog.title)) {
+          dialog.title = `${inform.first_name} ${inform.last_name}`;
+        }
       }
     })
     return _dialogs;
