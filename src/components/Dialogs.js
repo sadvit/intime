@@ -5,6 +5,7 @@ import DialogsHeader from '../components/DialogsHeader.js'
 import {Scrollbars} from 'react-custom-scrollbars';
 import _ from 'lodash';
 import { DIALOGS_CHUNK } from '../const'
+import { loadDialogsForUser } from '../actions'
 
 class Dialogs extends Component {
 
@@ -49,4 +50,4 @@ class Dialogs extends Component {
 
 export default connect((state, ownProps) => {
   return { dialogs: state.dialogs }
-})(Dialogs)
+}, { loadDialogsForUser })(Dialogs)
